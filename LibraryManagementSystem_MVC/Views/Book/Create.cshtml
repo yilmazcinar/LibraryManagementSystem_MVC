@@ -1,0 +1,105 @@
+﻿@using LibraryManagementSystem_MVC.Controllers
+@model LibraryManagementSystem_MVC.Models.Book
+
+@{
+    ViewData["Title"] = "Create New Book";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">Add New Book</h3>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Create">
+                        <!-- Kitap Başlık -->
+                        <div class="form-group mb-3">
+                            <label asp-for="Title" class="form-label">Book Title</label>
+                            <input asp-for="Title" class="form-control" placeholder="Enter book title" />
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                        </div>
+
+                        <!-- Yazar Bilgileri -->
+                        <div class="row">
+                            
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label asp-for="AuthorId" class="form-label">Author Name</label>
+									<select asp-items="ViewBag.authors" asp-for="AuthorId" class="form-control" ></select>
+                                    <span asp-validation-for="AuthorName" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tür ve Yayın Tarihi -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label asp-for="Genre" class="form-label">Genre</label>
+                                    <select asp-for="Genre" class="form-select">
+                                        <option value="">Select Genre</option>
+                                        <option value="Fiction">Fiction</option>
+                                        <option value="Non-Fiction">Non-Fiction</option>
+                                        <option value="Science Fiction">Science Fiction</option>
+                                        <option value="Mystery">Mystery</option>
+                                    </select>
+                                    <span asp-validation-for="Genre" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label asp-for="PublishDate" class="form-label">Publish Date</label>
+                                    <input asp-for="PublishDate" type="date" class="form-control" />
+                                    <span asp-validation-for="PublishDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ISBN ve Kopya Sayısı -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label asp-for="ISBN" class="form-label">ISBN</label>
+                                    <input asp-for="ISBN" class="form-control" placeholder="Enter ISBN (e.g., 978-3-16-148410-0)" />
+                                    <span asp-validation-for="ISBN" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label asp-for="CopiesAvailable" class="form-label">Available Copies</label>
+                                    <input asp-for="CopiesAvailable" type="number" class="form-control" min="0" placeholder="Enter available copies" />
+                                    <span asp-validation-for="CopiesAvailable" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Kitap Resmi ve Özet -->
+                        <div class="form-group mb-3">
+                            <label asp-for="ImageUrl" class="form-label">Cover Image URL</label>
+                            <input asp-for="ImageUrl" class="form-control" placeholder="Paste image URL (e.g., https://example.com/book-cover.jpg)" />
+                            <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label asp-for="BookSummary" class="form-label">Summary</label>
+                            <textarea asp-for="BookSummary" class="form-control" rows="5" placeholder="Write a brief summary..."></textarea>
+                            <span asp-validation-for="BookSummary" class="text-danger"></span>
+                        </div>
+
+                        <!-- Butonlar -->
+                        <div class="form-group d-flex justify-content-between">
+                            <button type="submit" class="btn btn-success">
+                                <i class="bi bi-journal-plus"></i> Create
+                            </button>
+                            <a asp-controller="Book" asp-action="List" class="btn btn-secondary">
+                                <i class="bi bi-x-circle"></i> Cancel
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

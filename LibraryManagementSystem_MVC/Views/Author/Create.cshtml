@@ -1,0 +1,65 @@
+﻿@model LibraryManagementSystem_MVC.Models.Author
+
+@{
+    ViewData["Title"] = "Create Author";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">Create New Author</h3>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Create">
+                        <!-- First Name -->
+                        <div class="form-group mb-3">
+                            <label asp-for="FirstName" class="form-label">First Name</label>
+                            <input asp-for="FirstName" class="form-control" placeholder="Enter first name" />
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                        </div>
+
+                        <!-- Last Name -->
+                        <div class="form-group mb-3">
+                            <label asp-for="LastName" class="form-label">Last Name</label>
+                            <input asp-for="LastName" class="form-control" placeholder="Enter last name" />
+                            <span asp-validation-for="LastName" class="text-danger"></span>
+                        </div>
+
+                        <!-- Date of Birth -->
+                        <div class="form-group mb-3">
+                            <label asp-for="DateOfBirth" class="form-label">Date of Birth</label>
+                            <input asp-for="DateOfBirth" type="date" class="form-control" />
+                            <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                        </div>
+
+                        <!-- Image URL -->
+                        <div class="form-group mb-3">
+                            <label asp-for="ImageUrl" class="form-label">Image URL</label>
+                            <input asp-for="ImageUrl" class="form-control" placeholder="Paste image URL (e.g., https://example.com/photo.jpg)" />
+                            <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                        </div>
+
+                        <!-- About -->
+                        <div class="form-group mb-4">
+                            <label asp-for="About" class="form-label">Biography</label>
+                            <textarea asp-for="About" class="form-control" rows="5" placeholder="Write a brief biography..."></textarea>
+                            <span asp-validation-for="About" class="text-danger"></span>
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="form-group d-flex justify-content-between">
+                            <button type="submit" class="btn btn-success">
+                                <i class="bi bi-save"></i> Create
+                            </button>
+                            <a asp-controller="Author" asp-action="List" class="btn btn-secondary">
+                                <i class="bi bi-x-circle"></i> Cancel
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

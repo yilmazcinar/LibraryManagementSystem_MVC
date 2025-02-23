@@ -1,0 +1,53 @@
+﻿@using LibraryManagementSystem_MVC.Models
+@model List<Author>
+
+<div class="card mt-5">
+    <div class="card-header text-center fw-bold">
+        <!-- Create Butonu -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="mb-0">Authors</h2>
+            <a asp-controller="Author" asp-action="Create" class="btn btn-success btn-sm">
+                <i class="bi bi-plus-circle"></i> Create New Author
+            </a>
+        </div>
+
+        <div class="row">
+            <!-- Kartları yan yana dizmek için row ekledim -->
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <!-- Her satırda 2 (md) veya 3 (lg) kart göster -->
+                    <div class="card h-100">
+                        <!-- Kartın yüksekliğini eşitle -->
+                        <div class="row g-0 h-100">
+                            <!-- İçeriği düzgün hizalamak için h-100 ekledim -->
+                            <div class="col-md-4">
+                                <!-- Resmin yüksekliğini sabitle ve orantılı göster -->
+                                <img src="@item.ImageUrl" class="img-fluid rounded-start h-100" alt="..." style="object-fit: cover; height: 200px;">
+                            </div>
+                            <div class="col-md-8 d-flex flex-column">
+                                <!-- İçeriği düzgün hizalamak için flex-column ekledim -->
+                                <div class="card-body">
+                                    <h5 class="card-title">@item.FirstName @item.LastName</h5>
+                                    <p class="card-text">@item.About</p>
+                                    <p class="card-text"><small class="text-body-secondary">Birth Day : @item.DateOfBirth.ToShortDateString()</small></p>
+                                </div>
+                                <!-- Butonlar -->
+                                <div class="mt-auto p-3">
+                                    <!-- Butonları kartın altına sabitle -->
+                                    <div class="d-flex justify-content-between">
+                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Edit</a>
+                                        <a asp-controller="Author" asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm">Details</a>
+                                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+

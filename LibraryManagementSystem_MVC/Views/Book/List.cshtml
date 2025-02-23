@@ -1,0 +1,46 @@
+﻿@using LibraryManagementSystem_MVC.Models
+@model List<Book>
+
+<div class="card mt-5">
+    <div class="card-header text-center fw-bold">
+        <!-- Create Butonu -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="mb-0">Books</h2>
+            <a asp-action="Create" class="btn btn-success btn-sm">
+                <i class="bi bi-plus-circle"></i> Create New Book
+            </a>
+        </div>
+
+        <div class="row">
+            <!-- Kartları yan yana dizmek için row ekledim -->
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <!-- Her satırda 2 (md) veya 3 (lg) kart göster -->
+                    <div class="card mb-3" style="max-width: 540px;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="@item.ImageUrl" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">@item.Title</h5>
+                                    <p class="card-text">Author Name : @item.AuthorName</p>
+                                    <p class="card-text">Genre : @item.Genre</p>
+                                    <p class="card-text">Summary : @item.BookSummary</p>
+                                    <p class="card-text"><small class="text-body-secondary">Copy Count : @item.CopiesAvailable</small></p>
+                                    <!-- Butonlar -->
+                                    <div class="d-flex justify-content-between mt-3">
+                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Edit</a>
+                                        <a asp-controller="Book" asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm">Details</a>
+                                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

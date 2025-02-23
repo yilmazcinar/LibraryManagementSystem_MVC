@@ -1,0 +1,48 @@
+﻿@model LibraryManagementSystem_MVC.Models.Book
+
+
+
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header bg-light">
+            <h3 class="mb-0">@Model.Title</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <!-- Book Image -->
+                <div class="col-md-4">
+                    <img src="@Model.ImageUrl" class="img-fluid rounded" alt="@Model.Title" style="max-height: 400px; object-fit: cover;">
+                </div>
+                <!-- Book Details -->
+                <div class="col-md-8">
+                    <dl class="row">
+                        <dt class="col-sm-3">Title</dt>
+                        <dd class="col-sm-9">@Model.Title</dd>
+
+                         <dt class="col-sm-3">Author</dt>
+                        <dd class="col-sm-9">@Model.AuthorName</dd> 
+
+                        <dt class="col-sm-3">Genre</dt>
+                        <dd class="col-sm-9">@Model.Genre</dd>
+
+                        <dt class="col-sm-3">Publication Year</dt>
+                        <dd class="col-sm-9">@Model.PublishDate.ToShortDateString()</dd>
+
+                        <dt class="col-sm-3">Available Copies</dt>
+                        <dd class="col-sm-9">@Model.CopiesAvailable</dd>
+
+                        <!-- Eğer Book modelinizde Description varsa -->
+                        <dt class="col-sm-3">Description</dt>
+                        <dd class="col-sm-9">@Model.BookSummary</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <!-- Back Button -->
+        <div class="card-footer">
+            <a asp-controller="Book"asp-action="List" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left"></i> Back to List
+            </a>
+        </div>
+    </div>
+</div>
